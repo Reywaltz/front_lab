@@ -1,0 +1,33 @@
+<app-header>
+    
+    <form Text1>
+        <div>
+          <label>Логин</label>
+          <input
+          type="text"
+          [(ngModel)]="loginForm.login"
+          required
+          name="login"/>
+        </div>
+        <div>
+          <label>Пароль</label>
+          <input
+          type="password"
+          name="password"
+          [(ngModel)]="loginForm.password"
+          required/>
+        </div>
+        <button (click)="getformdata()">Войти</button>
+      </form>
+    
+    <div Text2>
+        <div *ngFor="let item of _itemlist; index as i">
+            <p>id: {{item.id}}</p>
+            <p>name: {{item.name}}</p>
+            <p>cost: {{item.cost}}</p>
+            <p>placement_id: {{item.placement.id}}</p>
+            <p>placement_sector: {{item.placement.sector}}</p>
+            <p>placement_letter: {{item.placement.letter}}</p>
+        </div>
+    </div>
+</app-header>
