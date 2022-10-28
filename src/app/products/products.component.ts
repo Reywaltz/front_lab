@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { IWarehouseItem } from '../main/warehouse.model';
 import { WarehouseService } from '../services/warehouse.service';
 
@@ -14,13 +13,23 @@ export class ProductsComponent implements OnInit {
     private warehouseService: WarehouseService,
     ) { }
 
-  public _itemlist: IWarehouseItem[] = [];
-
+    public _itemlist: IWarehouseItem[] = [];
+    readonly columns = [
+      'id',
+      'name',
+      'cost',
+      'color',
+      'country',
+      'sector',
+      'letter',
+      'occupied'
+    ];
+    
   ngOnInit(): void {
       this.warehouseService.get_items().subscribe(
         (data: any) => {
           this._itemlist = [...data];
-          console.log(this._itemlist);
+          console.log();
         }
       )
     }

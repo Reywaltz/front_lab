@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsComponent } from './products/products.component';
+import { TuiTableModule } from "@taiga-ui/addon-table";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProductsComponent } from './products/products.component';
     BrowserAnimationsModule,
     TuiRootModule,
     TuiButtonModule,
+    TuiTableModule,
     TuiDialogModule,
     TuiAlertModule
 ],
