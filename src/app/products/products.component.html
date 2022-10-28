@@ -1,0 +1,33 @@
+<app-header>  
+    <nav NavigationMenu class="nav-menu">
+    <button 
+      tuiButton
+      type="button"
+      appearance="primary"
+      size="m"
+      class="header-button"
+    >
+    <span class="header-button-text">Получение товаров</span>
+    </button>
+    <button
+      tuiButton
+      type="button"
+      appearance="primary"
+      size="m"
+      class="header-button"
+      >
+    <span class="header-button-text">Добавление товаров</span>
+  </button>
+  </nav>
+  </app-header>
+
+  <div>
+    <div *ngFor="let item of _itemlist; index as i">
+        <p>id: {{item.id}}</p>
+        <p>name: {{item.name}}</p>
+        <p>cost: {{item.cost}}</p>
+        <p>placement_id: {{item.placement.id}}</p>
+        <p>placement_sector: {{item.placement.sector}}</p>
+        <p>placement_letter: {{item.placement.letter}}</p>
+    </div>
+  </div>

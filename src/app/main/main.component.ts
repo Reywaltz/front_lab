@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WarehouseService } from '../services/warehouse.service';
 import { IFormData, IWarehouseItem } from './warehouse.model';
 
@@ -10,7 +10,10 @@ import { IFormData, IWarehouseItem } from './warehouse.model';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private warehouseService: WarehouseService) { }
+  constructor(
+    private warehouseService: WarehouseService,
+    private routerService: Router
+    ) { }
 
   // С нижним _ в шаблоне
   public _itemlist: IWarehouseItem[] = [];
@@ -23,13 +26,10 @@ export class MainComponent implements OnInit {
   }
 
 
-  ngOnInit(): void { 
-    this.warehouseService.get_items().subscribe(
-      (data: any) => {
-        this._itemlist = [...data];
-        console.log(1);
-      }
-    )
+  ngOnInit(): void {   }
+
+  public navigate_products() {
+    this.routerService.navigateByUrl('products')
   }
 
   public getformdata() {

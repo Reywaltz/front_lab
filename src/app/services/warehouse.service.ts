@@ -12,7 +12,7 @@ export class WarehouseService {
   constructor(private http: HttpClient) { }
   
   public get_items() {
-    return this.http.get('http://localhost:8000/')
+    return this.http.get('http://0.0.0.0:8000/')
   }
 
   public push_form(body: IFormData) {
