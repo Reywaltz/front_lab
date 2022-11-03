@@ -1,92 +1,53 @@
-<app-header>  
-    <nav NavigationMenu class="nav-menu">
-    <button 
-      tuiButton
-      type="button"
-      appearance="primary"
-      size="m"
-      class="header-button"
-    >
-    <span class="header-button-text">Получение товаров</span>
-    </button>
-    <button
-      tuiButton
-      type="button"
-      appearance="primary"
-      size="m"
-      class="header-button"
-      >
-    <span class="header-button-text">Добавление товаров</span>
-  </button>
-  </nav>
-  </app-header>
-
-  <table 
-    tuiTable
-    [columns]= "columns"
-    >
-    <thead>
-      <tr tuiThGroup>
-      <th *tuiHead="'id'" tuiTh [resizable]="true">
-        Id
-      </th>
-      <th *tuiHead="'name'" tuiTh [resizable]="true">
-        Name
-      </th>
-      <th *tuiHead="'cost'" tuiTh [resizable]="true">
-        Cost
-      </th>
-      <th *tuiHead="'color'" tuiTh [resizable]="true">
-        Color
-      </th>
-      <th *tuiHead="'country'" tuiTh [resizable]="true">
-        Country
-      </th>
-      <th *tuiHead="'sector'"tuiTh [resizable]="true">
-        Sector
-      </th>
-      <th *tuiHead="'letter'"tuiTh [resizable]="true">
-        Letter
-      </th>
-      <th *tuiHead="'occupied'"tuiTh [resizable]="true">
-        Occupied
-      </th>
-    </tr>
-    </thead>
-    <tbody
-    tuiTbody
-    [data]="_itemlist">
-      <tr *ngFor="let item of _itemlist; let index=index" tuiTr>
-        <td *tuiCell="'id'" tuiTd>{{item.id}}</td>
-        <td *tuiCell="'name'" tuiTd>{{item.name}}</td>
-        <td *tuiCell="'cost'" tuiTd>{{item.cost}}</td>
-        <td *tuiCell="'color'" tuiTd>{{item.color}}</td>
-        <td *tuiCell="'country'" tuiTd>{{item.country}}</td>
-        <td *tuiCell="'sector'" tuiTd>{{item.placement.sector}}</td>
-        <td *tuiCell="'letter'" tuiTd>{{item.placement.letter}}</td>
-        <td *tuiCell="'occupied'" tuiTd>{{item.placement.occupied}}</td>
-    </tr>
-
-    </tbody>
-  </table>
-<!-- 
-  <table
-  tuiTable
-  [columns]= "['name']">
-
-  <thead>
-    <tr tuiThGroup>
-      <th *tuiHead="'name'" tuiTh >
-        Id
-      </th>
-    </tr>
-    </thead>
-  <tbody tuiTbody>
-      <tr tuiTr>
-        <td tuiTd>
-          test
-        </td>
-      </tr>
-    </tbody>
-  
-</table> -->
+<div class="productTableContainer">
+    <table tuiTable [columns]="columns" class="productTableContainerTable">
+        <thead>
+            <tr tuiThGroup>
+                <th *tuiHead="'id'" tuiTh [resizable]="true" [sorter]="null">
+                    ID
+                </th>
+                <th *tuiHead="'name'" tuiTh [resizable]="true">Имя товара</th>
+                <th *tuiHead="'cost'" tuiTh [resizable]="true">Стоймость</th>
+                <th *tuiHead="'color'" tuiTh [resizable]="true">Цвет</th>
+                <th *tuiHead="'country'" tuiTh [resizable]="true">
+                    Страна изготовитель
+                </th>
+                <th *tuiHead="'developer'" tuiTh [resizable]="true">
+                    Изготовитель
+                </th>
+                <th
+                    *tuiHead="'number'"
+                    tuiTh
+                    [resizable]="true"
+                    [sorter]="null"
+                >
+                    Номер ячейки
+                </th>
+                <th
+                    *tuiHead="'occupied'"
+                    tuiTh
+                    [resizable]="true"
+                    [sorter]="null"
+                >
+                    В наличии
+                </th>
+            </tr>
+        </thead>
+        <tbody
+            *tuiLet="_itemlist | tuiTableSort as sortedProducts"
+            tuiTbody
+            [data]="sortedProducts"
+        >
+            <tr *ngFor="let item of sortedProducts; let index = index" tuiTr>
+                <td *tuiCell="'id'" tuiTd>{{ item.id }}</td>
+                <td *tuiCell="'name'" tuiTd>{{ item.name }}</td>
+                <td *tuiCell="'cost'" tuiTd>{{ item.cost }}</td>
+                <td *tuiCell="'color'" tuiTd>{{ item.color }}</td>
+                <td *tuiCell="'country'" tuiTd>{{ item.country }}</td>
+                <td *tuiCell="'number'" tuiTd>{{ item.placement.number }}</td>
+                <td *tuiCell="'occupied'" tuiTd>
+                    {{ availabilityStatus(item.placement.occupied) }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

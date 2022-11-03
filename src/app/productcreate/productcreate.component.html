@@ -1,0 +1,58 @@
+<div class="productCreateContainer">
+    <form class="productCreateForm" [formGroup]="testForm">
+        <tui-input
+            tuiTextfieldExampleText="Field placeholder"
+            formControlName="nameValue"
+            tuiHintContent="A tooltip"
+        >
+            Введите имя товара
+        </tui-input>
+        <tui-input-number
+            formControlName="moneyValue"
+            [postfix]="'RUB' | tuiCurrency"
+        >
+            Введите стоймость
+        </tui-input-number>
+
+        <tui-select formControlName="countryValue" [valueContent]="value">
+            Выберите страну
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    <button
+                        *ngFor="let item of countries"
+                        tuiOption
+                        [value]="item"
+                    >
+                        <div>{{ item.name }} {{ item.emoji }}</div>
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-select>
+    </form>
+</div>
+
+<ng-template #value let-data>
+    <div class="countryNametemplate">
+        <div class="name">{{data.name}} {{ data.emoji}}</div>
+    </div>
+</ng-template>
+
+<!-- <form>
+    <div>
+      <label>Логин</label>
+      <input
+      type="text"
+      [(ngModel)]="loginForm.login"
+      required
+      name="login"/>
+    </div>
+    <div>
+      <label>Пароль</label>
+      <input
+      type="password"
+      name="password"
+      [(ngModel)]="loginForm.password"
+      required/>
+    </div>
+    <button (click)="getformdata()">Войти</button>
+  </form> -->

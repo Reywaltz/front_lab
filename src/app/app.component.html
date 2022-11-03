@@ -1,3 +1,27 @@
 <tui-root>
-<router-outlet></router-outlet>
+    <app-header>
+        <nav NavigationMenu class="nav-menu">
+            <button
+                tuiButton
+                type="button"
+                appearance="primary"
+                size="m"
+                class="header-button"
+                (click)="navigate_products()"
+            >
+                <span class="header-button-text">Получение товаров</span>
+            </button>
+            <button
+                tuiButton
+                type="button"
+                appearance="primary"
+                size="m"
+                class="header-button"
+                (click)="navidateCreateProduct()"
+            >
+                <span class="header-button-text">Добавление товаров</span>
+            </button>
+        </nav>
+    </app-header>
+    <router-outlet></router-outlet>
 </tui-root>
