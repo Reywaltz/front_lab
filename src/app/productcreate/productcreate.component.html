@@ -1,21 +1,35 @@
 <div class="productCreateContainer">
-    <form class="productCreateForm" [formGroup]="testForm">
+    <form
+        class="productCreateForm"
+        [formGroup]="addProductForm"
+        (ngSubmit)="onFormSubmit()"
+    >
+        <span
+            class="formInputError"
+            *ngIf="addProductForm.get('nameValue')?.invalid"
+            >* Введите корректное имя</span
+        >
         <tui-input
             tuiTextfieldExampleText="Field placeholder"
             formControlName="nameValue"
             tuiHintContent="A tooltip"
-        >
-            Введите имя товара
+            >Имя товара
         </tui-input>
+
+        <span
+            class="formInputError"
+            *ngIf="addProductForm.get('moneyValue')?.invalid"
+            >* Введите корректную сумму</span
+        >
         <tui-input-number
             formControlName="moneyValue"
             [postfix]="'RUB' | tuiCurrency"
         >
-            Введите стоймость
+            Стоймость
         </tui-input-number>
 
         <tui-select formControlName="countryValue" [valueContent]="value">
-            Выберите страну
+            Страна изготовитель
             <ng-template tuiDataList>
                 <tui-data-list>
                     <button
@@ -28,12 +42,61 @@
                 </tui-data-list>
             </ng-template>
         </tui-select>
+
+        <span
+            class="formInputError"
+            *ngIf="addProductForm.get('developerValue')?.invalid"
+            >* Введите корректное наименование</span
+        >
+        <tui-input
+            tuiTextfieldExampleText="Изготовитель"
+            formControlName="developerValue"
+            tuiHintContent="A tooltip"
+        >
+            Наименование
+        </tui-input>
+
+        <span
+            class="formInputError"
+            *ngIf="addProductForm.get('colorValue')?.invalid"
+            >* Введите корректный цвет</span
+        >
+        <tui-input
+            tuiTextfieldExampleText="Цвет"
+            formControlName="colorValue"
+            tuiHintContent="A tooltip"
+        >
+            Цвет
+        </tui-input>
+
+        <span
+            class="formInputError"
+            *ngIf="addProductForm.get('placeValue')?.invalid"
+            >* Введите корректный номер ячейки</span
+        >
+        <tui-input
+            tuiTextfieldExampleText="Ячейка"
+            formControlName="placeValue"
+            tuiHintContent="A tooltip"
+        >
+            Ячейка
+        </tui-input>
+        <button
+            tuiButton
+            type="submit"
+            appearance="primary"
+            size="m"
+            class="productCreateButton"
+            [disabled]="!addProductForm.valid"
+        >
+            Добавить товар
+        </button>
     </form>
 </div>
 
 <ng-template #value let-data>
     <div class="countryNametemplate">
-        <div class="name">{{data.name}} {{ data.emoji}}</div>
+        <div class="name">{{ data.name }} {{ data.emoji }}</div>
     </div>
 </ng-template>
 

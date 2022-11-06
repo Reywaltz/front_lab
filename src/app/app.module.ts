@@ -4,6 +4,7 @@ import {
     TuiAlertModule,
     TuiButtonModule,
     TuiDataListModule,
+    TuiErrorModule,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,9 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiDataListWrapperModule,
+    TuiComboBoxModule,
     TuiSelectModule,
+    TuiFieldErrorPipeModule,
 } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 
@@ -41,12 +44,15 @@ import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        TuiComboBoxModule,
+        TuiErrorModule,
         HttpClientModule,
         FormsModule,
         BrowserAnimationsModule,
         TuiRootModule,
         TuiButtonModule,
         ScrollingModule,
+        TuiFieldErrorPipeModule,
         TuiTableModule,
         TuiInputNumberModule,
         TuiLetModule,

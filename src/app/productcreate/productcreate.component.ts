@@ -11,33 +11,35 @@ import { WarehouseService } from '../services/warehouse.service';
 export class ProductcreateComponent implements OnInit {
     constructor(private warehouseService: WarehouseService) {}
 
+    public countries: Countries[] = countries;
+    public addProductForm: FormGroup = {} as FormGroup
 
 
-    // public countries: string[] = this.parseCountries(countries)
-    public countries: Countries[] = countries
-
-    public parseCountries(data: Countries[]) {
-        let result: Array<string> = []
-        data.forEach(element => {
-            result.push(element.name)
+    ngOnInit(): void {
+        this.addProductForm = new FormGroup({
+            nameValue: new FormControl('', [
+                Validators.required,
+                Validators.minLength(3),
+            ]),
+            moneyValue: new FormControl('', [
+                Validators.required,
+                Validators.min(0),
+            ]),
+            countryValue: new FormControl('', Validators.required),
+            developerValue: new FormControl('', [
+                Validators.required,
+                Validators.minLength(3),
+            ]),
+            colorValue: new FormControl('', [
+                Validators.required,
+                Validators.minLength(4),
+            ]),
+            placeValue: new FormControl('', [Validators.required]),
         });
-
-        return result
     }
 
-    ngOnInit(): void {console.log(countries[0])}
-
-    // public loginForm: IFormData = {
-    //   login: 'Имя',
-    //   password: '',
-    // }
-
-    testForm = new FormGroup({
-        nameValue: new FormControl('', Validators.required),
-        moneyValue: new FormControl('Имя2', Validators.required),
-        personValue: new FormControl('', Validators.required),
-        countryValue: new FormControl('Страна', Validators.required),
-    });
+    onFormSubmit(): void {
+        console.log('Form:' + this.addProductForm);
+        console.log('Form json:' + JSON.stringify(this.addProductForm.value));
+    }
 }
-
-
