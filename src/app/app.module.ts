@@ -30,6 +30,7 @@ import {
     TuiFieldErrorPipeModule,
 } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import { ProductchangeComponent } from './productchange/productchange.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
         NotFoundComponent,
         ProductsComponent,
         ProductcreateComponent,
+        ProductchangeComponent,
     ],
     imports: [
         BrowserModule,

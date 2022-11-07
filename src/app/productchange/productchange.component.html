@@ -1,12 +1,12 @@
-<div class="productCreateContainer">
+<div class="productEditContainer">
     <form
-        class="productCreateForm"
-        [formGroup]="addProductForm"
+        class="productEditForm"
+        [formGroup]="editProductForm"
         (ngSubmit)="onFormSubmit()"
     >
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('nameValue')?.invalid"
+            *ngIf="editProductForm.get('nameValue')?.invalid"
             >* Введите корректное имя</span
         >
         <tui-input
@@ -18,7 +18,7 @@
 
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('moneyValue')?.invalid"
+            *ngIf="editProductForm.get('moneyValue')?.invalid"
             >* Введите корректную сумму</span
         >
         <tui-input-number
@@ -45,7 +45,7 @@
 
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('developerValue')?.invalid"
+            *ngIf="editProductForm.get('developerValue')?.invalid"
             >* Введите корректное наименование</span
         >
         <tui-input
@@ -58,7 +58,7 @@
 
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('colorValue')?.invalid"
+            *ngIf="editProductForm.get('colorValue')?.invalid"
             >* Введите корректный цвет</span
         >
         <tui-input
@@ -71,7 +71,7 @@
 
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('placeValue')?.invalid"
+            *ngIf="editProductForm.get('placeValue')?.invalid"
             >* Введите корректный номер ячейки</span
         >
         <tui-input
@@ -81,13 +81,19 @@
         >
             Ячейка
         </tui-input>
+        
+        <span
+            class="formButtonError"
+            *ngIf="editProductForm.errors?.['dataInputed']"
+            >* Введите хотя бы одно поле для редактирования</span
+        >
         <button
             tuiButton
             type="submit"
             appearance="primary"
             size="m"
-            class="productCreateButton"
-            [disabled]="!addProductForm.valid"
+            class="productEditButton"
+            [disabled]="editProductForm.errors?.['dataInputed']"
         >
             Добавить товар
         </button>

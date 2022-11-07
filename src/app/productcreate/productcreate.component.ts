@@ -9,11 +9,12 @@ import { WarehouseService } from '../services/warehouse.service';
     styleUrls: ['./productcreate.component.less'],
 })
 export class ProductcreateComponent implements OnInit {
-    constructor(private warehouseService: WarehouseService) {}
+    constructor(private warehouseService: WarehouseService) {
+        this.warehouseService = warehouseService
+    }
 
     public countries: Countries[] = countries;
-    public addProductForm: FormGroup = {} as FormGroup
-
+    public addProductForm: FormGroup = {} as FormGroup;
 
     ngOnInit(): void {
         this.addProductForm = new FormGroup({
@@ -38,8 +39,17 @@ export class ProductcreateComponent implements OnInit {
         });
     }
 
+    public parseForm(form: FormGroup): FormGroup {
+        let country = form.value['countryValue']
+        form.value['countryValue'] = country.name
+
+        return form
+    }
+
     onFormSubmit(): void {
-        console.log('Form:' + this.addProductForm);
-        console.log('Form json:' + JSON.stringify(this.addProductForm.value));
+        let data = this.parseForm(this.addProductForm);
+        this.warehouseService.push_form(data.value).subscribe((body: any) => {
+            console.log(body);
+        });
     }
 }

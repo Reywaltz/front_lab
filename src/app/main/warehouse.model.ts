@@ -16,6 +16,10 @@ interface IWarehouseItemPlace {
 }
 
 export interface IFormData {
-    login: string;
-    password: string;
+    nameValue: string;
+    costValue: string;
+    countryValue: string;
+    developerValue: string;
+    colorValue: string;
+    placementValue: string;
 }

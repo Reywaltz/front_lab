@@ -3,19 +3,17 @@ import { Injectable } from '@angular/core';
 import { IFormData } from '../main/warehouse.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-
-
 export class WarehouseService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-  
-  public get_items() {
-    return this.http.get('http://0.0.0.0:8000/')
-  }
+    public get_items() {
+        return this.http.get('http://0.0.0.0:8000/');
+    }
 
-  public push_form(body: IFormData) {
-    return this.http.post('http://localhost:8000/form', body)
-  }
+    public push_form(body: IFormData) {
+      console.log('pre-sent')  
+      return this.http.post('http://localhost:8000/form', body);
+    }
 }
