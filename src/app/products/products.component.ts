@@ -11,6 +11,12 @@ export class ProductsComponent implements OnInit {
     constructor(private warehouseService: WarehouseService) {}
 
     public _itemlist: IWarehouseItem[] = [];
+    public nameModel = '';
+    public moneyModel = '';
+    public occupiedModel = '';
+    public countryModel = '';
+    public colorModel = '';
+    public developerModel = '';
     readonly columns = [
         'id',
         'name',

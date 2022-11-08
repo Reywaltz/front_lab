@@ -5,6 +5,7 @@ import {
     TuiButtonModule,
     TuiDataListModule,
     TuiErrorModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -31,7 +32,7 @@ import {
 } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { ProductchangeComponent } from './productchange/productchange.component';
-
+import { FilterlistPipe } from './pipes/filter.pipe';
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,6 +41,7 @@ import { ProductchangeComponent } from './productchange/productchange.component'
         NotFoundComponent,
         ProductsComponent,
         ProductcreateComponent,
+        FilterlistPipe,
         ProductchangeComponent,
     ],
     imports: [
@@ -58,6 +60,7 @@ import { ProductchangeComponent } from './productchange/productchange.component'
         TuiTableModule,
         TuiInputNumberModule,
         TuiLetModule,
+        TuiTextfieldControllerModule,
         TuiSelectModule,
         TuiDataListModule,
         TuiCurrencyPipeModule,

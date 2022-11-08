@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { countries } from '../assets/countries';
 
 @Component({
     selector: 'app-root',
@@ -18,5 +17,9 @@ export class AppComponent {
 
     public navidateCreateProduct() {
         this.routerService.navigateByUrl('products/create');
+    }
+
+    public navidateEditProduct() {
+        this.routerService.navigateByUrl('products/edit');
     }
 }
