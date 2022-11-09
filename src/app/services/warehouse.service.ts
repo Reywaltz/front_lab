@@ -17,7 +17,7 @@ export class WarehouseService {
     }
 
     public pushCreateProductForm(body: ICreateProductForm) {
-      return this.http.post('http://localhost:8000/form', body);
+      return this.http.post('http://localhost:8000/api/v1/product', body);
     }
 
     public changeProductPlace(place_id: number, body: IWarehouseItem) {

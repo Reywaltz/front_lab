@@ -37,7 +37,7 @@ export class ProductchangeplaceComponent implements OnInit {
         let placeId = this.editProductPlaceForm.value['placeValue'];
         let product = this.editProductPlaceForm.value['productValue'];
         this.warehouseService
-            .changeProductPlace(placeId, product)
+            .changeProductPlace(placeId.id, product)
             .subscribe((body: any) => {});
     }
 }

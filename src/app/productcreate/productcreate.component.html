@@ -53,7 +53,7 @@
             formControlName="developerValue"
             tuiHintContent="A tooltip"
         >
-            Наименование
+            Бренд
         </tui-input>
 
         <span
@@ -71,16 +71,54 @@
 
         <span
             class="formInputError"
-            *ngIf="addProductForm.get('placeValue')?.invalid"
-            >* Введите корректный номер ячейки</span
+            *ngIf="addProductForm.get('typeValue')?.invalid"
+            >* Введите корректный цвет</span
         >
         <tui-input
-            tuiTextfieldExampleText="Ячейка"
-            formControlName="placeValue"
+            tuiTextfieldExampleText="Цвет"
+            formControlName="typeValue"
             tuiHintContent="A tooltip"
         >
-            Ячейка
+            Тип
         </tui-input>
+
+        <tui-select
+            class="statusInput"
+            tuiTextfieldSize="l"
+            formControlName="statusValue"
+            [tuiTextfieldCleaner]="true"
+            [(ngModel)]="statusModel"
+        >
+            Статус товара
+            <input tuiTextfield placeholder="Статус товара" />
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="['Доступен', 'Списан', 'Не доступен']"
+            ></tui-data-list-wrapper>
+        </tui-select>
+
+        <tui-select
+            class="placeInput"
+            tuiTextfieldSize="l"
+            formControlName="placeValue"
+            [tuiTextfieldCleaner]="true"
+            [(ngModel)]="placeModel"
+            [valueContent]="place"
+        >
+            Выберите место
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    <button
+                        *ngFor="let place of freeSpaces"
+                        tuiOption
+                        [value]="place"
+                    >
+                        <div>#{{ place.id }}</div>
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-select>
+
         <button
             tuiButton
             type="submit"
@@ -97,5 +135,17 @@
 <ng-template #value let-data>
     <div class="countryNametemplate">
         <div class="name">{{ data.name }} {{ data.emoji }}</div>
+    </div>
+</ng-template>
+
+<ng-template #place let-data>
+    <div class="placetemplate">
+        <div class="place">{{ data.id }}</div>
+    </div>
+</ng-template>
+
+<ng-template #place let-data>
+    <div class="placetemplate">
+        <div class="place">{{ data.id }}</div>
     </div>
 </ng-template>
