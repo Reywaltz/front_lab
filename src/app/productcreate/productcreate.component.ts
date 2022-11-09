@@ -48,7 +48,7 @@ export class ProductcreateComponent implements OnInit {
 
     onFormSubmit(): void {
         let data = this.parseForm(this.addProductForm);
-        this.warehouseService.push_form(data.value).subscribe((body: any) => {
+        this.warehouseService.pushCreateProductForm(data.value).subscribe((body: any) => {
             console.log(body);
         });
     }

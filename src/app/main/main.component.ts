@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { WarehouseService } from '../services/warehouse.service';
-import { IFormData, IWarehouseItem } from './warehouse.model';
 
 @Component({
     selector: 'app-main',

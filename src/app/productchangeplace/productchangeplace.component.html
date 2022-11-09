@@ -33,7 +33,7 @@
                     <button
                         *ngFor="let place of freeSpaces"
                         tuiOption
-                        [value]="place"
+                        [value]="place.id"
                     >
                         <div>#{{ place.id }}</div>
                     </button>

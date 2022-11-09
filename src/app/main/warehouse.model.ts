@@ -15,13 +15,17 @@ interface IWarehouseItemPlace {
     occupied: boolean;
 }
 
-export interface IFormData {
+export interface ICreateProductForm {
     nameValue: string;
     costValue: string;
     countryValue: string;
     developerValue: string;
     colorValue: string;
     placementValue: string;
+}
+
+export interface IStatusForm {
+    status: string
 }
 
 export interface IPlacement {

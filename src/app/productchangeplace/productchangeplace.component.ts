@@ -36,9 +36,9 @@ export class ProductchangeplaceComponent implements OnInit {
     }
 
     onFormSubmit(): void {
-        let data = this.editProductPlaceForm;
-        console.log(data.value);
-        this.warehouseService.push_form(data.value).subscribe((body: any) => {
+        let placeId = this.editProductPlaceForm.value['placeValue'];
+        let product = this.editProductPlaceForm.value['productValue'];
+        this.warehouseService.changeProductPlace(placeId, product).subscribe((body: any) => {
             console.log(body);
         });
     }

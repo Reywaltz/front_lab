@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IFormData } from '../main/warehouse.model';
+import { ICreateProductForm, IStatusForm, IWarehouseItem } from '../main/warehouse.model';
 
 @Injectable({
     providedIn: 'root',
@@ -16,7 +16,15 @@ export class WarehouseService {
         return this.http.get('http://0.0.0.0:8000/api/v1/places')
     }
 
-    public push_form(body: IFormData) {
+    public pushCreateProductForm(body: ICreateProductForm) {
       return this.http.post('http://localhost:8000/form', body);
+    }
+
+    public changeProductPlace(place_id: number, body: IWarehouseItem) {
+        return this.http.post(`http://localhost:8000/api/v1/place/${place_id}`, body)
+    }
+
+    public changeProductStatus(product_id: number, body: IStatusForm) {
+        return this.http.post(`http://localhost:8000/api/v1/product/${product_id}`, body)
     }
 }

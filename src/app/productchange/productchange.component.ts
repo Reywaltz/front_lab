@@ -58,8 +58,11 @@ export class ProductchangeComponent implements OnInit {
     }
 
     onFormSubmit(): void {
-        let data = this.editProductForm;
-        this.warehouseService.push_form(data.value).subscribe((body: any) => {
+        let values = this.editProductForm.value
+        let product_id = values.productValue.id
+        let body = {"status": values.statusValue};
+        console.log(body)
+        this.warehouseService.changeProductStatus(product_id, body).subscribe((body: any) => {
             console.log(body);
         });
     }
