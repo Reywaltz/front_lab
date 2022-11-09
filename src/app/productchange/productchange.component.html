@@ -4,84 +4,36 @@
         [formGroup]="editProductForm"
         (ngSubmit)="onFormSubmit()"
     >
-        <span
-            class="formInputError"
-            *ngIf="editProductForm.get('nameValue')?.invalid"
-            >* Введите корректное имя</span
-        >
-        <tui-input
-            tuiTextfieldExampleText="Field placeholder"
-            formControlName="nameValue"
-            tuiHintContent="A tooltip"
-            >Имя товара
-        </tui-input>
-
-        <span
-            class="formInputError"
-            *ngIf="editProductForm.get('moneyValue')?.invalid"
-            >* Введите корректную сумму</span
-        >
-        <tui-input-number
-            formControlName="moneyValue"
-            [postfix]="'RUB' | tuiCurrency"
-        >
-            Стоймость
-        </tui-input-number>
-
-        <tui-select formControlName="countryValue" [valueContent]="value">
-            Страна изготовитель
+        <tui-select formControlName="productValue" [valueContent]="value">
+            Товар
             <ng-template tuiDataList>
                 <tui-data-list>
                     <button
-                        *ngFor="let item of countries"
+                        *ngFor="let item of _itemlist"
                         tuiOption
                         [value]="item"
                     >
-                        <div>{{ item.name }} {{ item.emoji }}</div>
+                        <div>{{ item.name }}</div>
                     </button>
                 </tui-data-list>
             </ng-template>
         </tui-select>
 
-        <span
-            class="formInputError"
-            *ngIf="editProductForm.get('developerValue')?.invalid"
-            >* Введите корректное наименование</span
+        <tui-select
+            class="statusInput"
+            tuiTextfieldSize="l"
+            formControlName="statusValue"
+            [tuiTextfieldCleaner]="true"
+            [(ngModel)]="statusModel"
         >
-        <tui-input
-            tuiTextfieldExampleText="Изготовитель"
-            formControlName="developerValue"
-            tuiHintContent="A tooltip"
-        >
-            Наименование
-        </tui-input>
+            Статус товара
+            <input tuiTextfield placeholder="Статус товара" />
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="['Доступен', 'Списан', 'Не доступен']"
+            ></tui-data-list-wrapper>
+        </tui-select>
 
-        <span
-            class="formInputError"
-            *ngIf="editProductForm.get('colorValue')?.invalid"
-            >* Введите корректный цвет</span
-        >
-        <tui-input
-            tuiTextfieldExampleText="Цвет"
-            formControlName="colorValue"
-            tuiHintContent="A tooltip"
-        >
-            Цвет
-        </tui-input>
-
-        <span
-            class="formInputError"
-            *ngIf="editProductForm.get('placeValue')?.invalid"
-            >* Введите корректный номер ячейки</span
-        >
-        <tui-input
-            tuiTextfieldExampleText="Ячейка"
-            formControlName="placeValue"
-            tuiHintContent="A tooltip"
-        >
-            Ячейка
-        </tui-input>
-        
         <span
             class="formButtonError"
             *ngIf="editProductForm.errors?.['dataInputed']"
@@ -93,7 +45,7 @@
             appearance="primary"
             size="m"
             class="productEditButton"
-            [disabled]="editProductForm.errors?.['dataInputed']"
+            [disabled]="!editProductForm.valid"
         >
             Добавить товар
         </button>
@@ -102,6 +54,6 @@
 
 <ng-template #value let-data>
     <div class="countryNametemplate">
-        <div class="name">{{ data.name }} {{ data.emoji }}</div>
+        <div class="name">{{ data.name }}</div>
     </div>
 </ng-template>

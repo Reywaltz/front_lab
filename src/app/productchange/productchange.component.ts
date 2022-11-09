@@ -6,8 +6,8 @@ import {
     ValidationErrors,
     Validators,
 } from '@angular/forms';
-import { tuiHeightCollapse } from '@taiga-ui/core';
 import { Countries, countries } from 'src/assets/countries';
+import { IWarehouseItem } from '../main/warehouse.model';
 import { WarehouseService } from '../services/warehouse.service';
 
 @Component({
@@ -21,27 +21,20 @@ export class ProductchangeComponent implements OnInit {
     }
 
     public countries: Countries[] = countries;
+    public _itemlist: IWarehouseItem[] = [];
+    public statusModel = '';
     public editProductForm: FormGroup = {} as FormGroup;
 
     ngOnInit(): void {
-        this.editProductForm = new FormGroup(
-            {
-                nameValue: new FormControl('', [Validators.minLength(3)]),
-                moneyValue: new FormControl('', [Validators.min(0)]),
-                countryValue: new FormControl(''),
-                developerValue: new FormControl('', [Validators.minLength(3)]),
-                colorValue: new FormControl('', [Validators.minLength(4)]),
-                placeValue: new FormControl('', [Validators.minLength(3)]),
-            },
-            { validators: this.CustomValidator }
-        );
-    }
+        this.warehouseService.get_items().subscribe((data: any) => {
+            this._itemlist = [...data];
+            console.log(this._itemlist);
+        });
 
-    public parseForm(form: FormGroup): FormGroup {
-        let country = form.value['countryValue'];
-        form.value['countryValue'] = country.name;
-
-        return form;
+        this.editProductForm = new FormGroup({
+            productValue: new FormControl('', [Validators.required]),
+            statusValue: new FormControl('', [Validators.required]),
+        });
     }
 
     public CustomValidator(control: AbstractControl): ValidationErrors | null {
@@ -65,7 +58,7 @@ export class ProductchangeComponent implements OnInit {
     }
 
     onFormSubmit(): void {
-        let data = this.parseForm(this.editProductForm);
+        let data = this.editProductForm;
         this.warehouseService.push_form(data.value).subscribe((body: any) => {
             console.log(body);
         });
