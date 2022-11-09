@@ -24,16 +24,10 @@ export class ProductsComponent implements OnInit {
         'color',
         'country',
         'developer',
+        'type',
         'number',
-        'occupied',
+        'status',
     ];
-
-    public availabilityStatus(status: boolean): string {
-        if (status == true) {
-            return 'Доступен';
-        }
-        return 'Не доступен';
-    }
 
     ngOnInit(): void {
         this.warehouseService.get_items().subscribe((data: any) => {

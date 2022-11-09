@@ -36,8 +36,8 @@
 
         <span
             class="formButtonError"
-            *ngIf="editProductForm.errors?.['dataInputed']"
-            >* Введите хотя бы одно поле для редактирования</span
+            *ngIf="!editProductForm.valid"
+            >* Выберите поля для редактирования</span
         >
         <button
             tuiButton

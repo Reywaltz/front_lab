@@ -1,0 +1,70 @@
+<div class="productEditPlaceContainer">
+    <form
+        class="productEditPlaceForm"
+        [formGroup]="editProductPlaceForm"
+        (ngSubmit)="onFormSubmit()"
+    >
+        <tui-select formControlName="productValue" [valueContent]="item">
+            Товар
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    <button
+                        *ngFor="let item of _itemlist"
+                        tuiOption
+                        [value]="item"
+                    >
+                        <div>{{ item.name }}</div>
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-select>
+
+        <tui-select
+            class="placeInput"
+            tuiTextfieldSize="l"
+            formControlName="placeValue"
+            [tuiTextfieldCleaner]="true"
+            [(ngModel)]="placeModel"
+            [valueContent]="place"
+        >
+            Новое место
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    <button
+                        *ngFor="let place of freeSpaces"
+                        tuiOption
+                        [value]="place"
+                    >
+                        <div>#{{ place.id }}</div>
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </tui-select>
+
+        <span class="formButtonError" *ngIf="!editProductPlaceForm.valid"
+            >* Выберите поля для редактирования</span
+        >
+        <button
+            tuiButton
+            type="submit"
+            appearance="primary"
+            size="m"
+            class="productEditPlaceButton"
+            [disabled]="!editProductPlaceForm.valid"
+        >
+            Добавить товар
+        </button>
+    </form>
+</div>
+
+<ng-template #item let-data>
+    <div class="itemtemplate">
+        <div class="item">{{ data.name }}</div>
+    </div>
+</ng-template>
+
+<ng-template #place let-data>
+    <div class="placetemplate">
+        <div class="place">{{data.id}}</div>
+    </div>
+</ng-template>

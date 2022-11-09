@@ -6,12 +6,12 @@ export interface IWarehouseItem {
     developer: string;
     color: string;
     type: string;
+    status: string;
     placement: IWarehouseItemPlace;
 }
 
 interface IWarehouseItemPlace {
     id: number;
-    number: number;
     occupied: boolean;
 }
 
@@ -22,4 +22,9 @@ export interface IFormData {
     developerValue: string;
     colorValue: string;
     placementValue: string;
+}
+
+export interface IPlacement {
+    id: number,
+    occupied: boolean
 }

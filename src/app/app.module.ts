@@ -33,6 +33,7 @@ import {
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { ProductchangeComponent } from './productchange/productchange.component';
 import { FilterlistPipe } from './pipes/filter.pipe';
+import { ProductchangeplaceComponent } from './productchangeplace/productchangeplace.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,6 +44,7 @@ import { FilterlistPipe } from './pipes/filter.pipe';
         ProductcreateComponent,
         FilterlistPipe,
         ProductchangeComponent,
+        ProductchangeplaceComponent,
     ],
     imports: [
         BrowserModule,

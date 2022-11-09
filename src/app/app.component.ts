@@ -22,4 +22,8 @@ export class AppComponent {
     public navidateEditProduct() {
         this.routerService.navigateByUrl('products/edit');
     }
+
+    public navidateEditPlaceProduct() {
+        this.routerService.navigateByUrl('products/edit/place');
+    }
 }

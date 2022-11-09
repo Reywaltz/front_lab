@@ -78,15 +78,23 @@
                         Изготовитель
                     </th>
                     <th
+                        *tuiHead="'type'"
+                        tuiTh
+                        [resizable]="true"
+                        [sorter]="null"
+                    >
+                        Тип товара
+                    </th>
+                    <th
                         *tuiHead="'number'"
                         tuiTh
                         [resizable]="true"
                         [sorter]="null"
                     >
-                        Номер ячейки
+                        Номер места
                     </th>
                     <th
-                        *tuiHead="'occupied'"
+                        *tuiHead="'status'"
                         tuiTh
                         [resizable]="true"
                         [sorter]="null"
@@ -118,11 +126,14 @@
                     <td *tuiCell="'cost'" tuiTd>{{ item.cost }}</td>
                     <td *tuiCell="'color'" tuiTd>{{ item.color }}</td>
                     <td *tuiCell="'country'" tuiTd>{{ item.country }}</td>
-                    <td *tuiCell="'number'" tuiTd>
-                        {{ item.placement.number }}
+                    <td *tuiCell="'type'" tuiTd>
+                        {{ item.type }}
                     </td>
-                    <td *tuiCell="'occupied'" tuiTd>
-                        {{ availabilityStatus(item.placement.occupied) }}
+                    <td *tuiCell="'number'" tuiTd>
+                        {{ item.placement.id }}
+                    </td>
+                    <td *tuiCell="'status'" tuiTd>
+                        {{ item.status }}
                     </td>
                 </tr>
             </tbody>
