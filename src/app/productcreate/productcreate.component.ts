@@ -10,7 +10,7 @@ import { WarehouseService } from '../services/warehouse.service';
 })
 export class ProductcreateComponent implements OnInit {
     constructor(private warehouseService: WarehouseService) {
-        this.warehouseService = warehouseService
+        this.warehouseService = warehouseService;
     }
 
     public countries: Countries[] = countries;
@@ -40,16 +40,16 @@ export class ProductcreateComponent implements OnInit {
     }
 
     public parseForm(form: FormGroup): FormGroup {
-        let country = form.value['countryValue']
-        form.value['countryValue'] = country.name
+        let country = form.value['countryValue'];
+        form.value['countryValue'] = country.name;
 
-        return form
+        return form;
     }
 
     onFormSubmit(): void {
         let data = this.parseForm(this.addProductForm);
-        this.warehouseService.pushCreateProductForm(data.value).subscribe((body: any) => {
-            console.log(body);
-        });
+        this.warehouseService
+            .pushCreateProductForm(data.value)
+            .subscribe((body: any) => {});
     }
 }

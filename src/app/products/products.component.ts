@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
     public _itemlist: IWarehouseItem[] = [];
     public nameModel = '';
     public moneyModel = '';
-    public occupiedModel = '';
+    public statusModel = '';
     public countryModel = '';
     public colorModel = '';
     public developerModel = '';
@@ -32,7 +32,6 @@ export class ProductsComponent implements OnInit {
     ngOnInit(): void {
         this.warehouseService.get_items().subscribe((data: any) => {
             this._itemlist = [...data];
-            console.log(this._itemlist);
         });
     }
 }

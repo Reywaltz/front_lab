@@ -11,7 +11,6 @@ export class FilterlistPipe implements PipeTransform {
         }
         let filteredUsers: any[] = [];
         for (let product of value) {
-            console.log(property, product);
             switch (property) {
                 case 'cost':
                     if (product[property].toString() === filterString) {
@@ -31,16 +30,10 @@ export class FilterlistPipe implements PipeTransform {
                         filteredUsers.push(product);
 
                     break;
-                case 'occupied':
-                    console.log(product.placement[property]);
+                case 'status':
                     let tmp = filterString;
-                    if (filterString == 'Доступен') {
-                        if (product.placement[property] === true)
-                            filteredUsers.push(product);
-                    } else {
-                        if (product.placement[property] === false)
-                            filteredUsers.push(product);
-                    }
+                    if (product[property] === filterString)
+                        filteredUsers.push(product);
                     break;
 
                 default:

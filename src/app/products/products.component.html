@@ -44,7 +44,7 @@
             class="searchInput"
             tuiTextfieldSize="l"
             [tuiTextfieldCleaner]="true"
-            [(ngModel)]="occupiedModel"
+            [(ngModel)]="statusModel"
         >
             Статус товара
             <input tuiTextfield placeholder="Статус товара" />
@@ -108,7 +108,7 @@
                     _itemlist
                         | filter: nameModel:'name'
                         | filter: moneyModel:'cost'
-                        | filter: occupiedModel:'occupied'
+                        | filter: statusModel:'status'
                         | filter: colorModel:'color'
                         | filter: countryModel:'country'
                         | filter: developerModel:'developer'

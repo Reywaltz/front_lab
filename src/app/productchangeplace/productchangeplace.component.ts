@@ -18,11 +18,9 @@ export class ProductchangeplaceComponent implements OnInit {
     public freeSpaces: IPlacement[] = [];
     public editProductPlaceForm: FormGroup = {} as FormGroup;
 
-
     ngOnInit(): void {
         this.warehouseService.get_items().subscribe((data: any) => {
             this._itemlist = [...data];
-            console.log(this._itemlist);
         });
 
         this.editProductPlaceForm = new FormGroup({
@@ -31,15 +29,15 @@ export class ProductchangeplaceComponent implements OnInit {
         });
 
         this.warehouseService.get_places().subscribe((data: any) => {
-          this.freeSpaces = [...data]
-        })
+            this.freeSpaces = [...data];
+        });
     }
 
     onFormSubmit(): void {
         let placeId = this.editProductPlaceForm.value['placeValue'];
         let product = this.editProductPlaceForm.value['productValue'];
-        this.warehouseService.changeProductPlace(placeId, product).subscribe((body: any) => {
-            console.log(body);
-        });
+        this.warehouseService
+            .changeProductPlace(placeId, product)
+            .subscribe((body: any) => {});
     }
 }

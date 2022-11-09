@@ -28,7 +28,6 @@ export class ProductchangeComponent implements OnInit {
     ngOnInit(): void {
         this.warehouseService.get_items().subscribe((data: any) => {
             this._itemlist = [...data];
-            console.log(this._itemlist);
         });
 
         this.editProductForm = new FormGroup({
@@ -58,12 +57,11 @@ export class ProductchangeComponent implements OnInit {
     }
 
     onFormSubmit(): void {
-        let values = this.editProductForm.value
-        let product_id = values.productValue.id
-        let body = {"status": values.statusValue};
-        console.log(body)
-        this.warehouseService.changeProductStatus(product_id, body).subscribe((body: any) => {
-            console.log(body);
-        });
+        let values = this.editProductForm.value;
+        let product_id = values.productValue.id;
+        let body = { status: values.statusValue };
+        this.warehouseService
+            .changeProductStatus(product_id, body)
+            .subscribe((body: any) => {});
     }
 }
